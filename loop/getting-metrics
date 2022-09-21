@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class Question1
+{
+    public static void main(String[]args)
+    {
+        //prompt the user to enter integers
+        System.out.print("Enter an integer, the input ends if it is 0: ");
+        //create a Scanner
+        Scanner input = new Scanner(System.in);
+        int integer = input.nextInt();
+        //check if integer is 0
+        if (integer == 0)
+        {
+            System.out.print("No numbers are entered except 0. ");
+            System.exit(0);
+        }
+
+        //calculate the metrics
+        int numOfPositives = 0;
+        int numOfNegatives = 0;
+        int numOfIntegers = 1;
+        double total = 0;
+        double average = 0;
+        while (integer != 0)
+        {
+            total += integer;
+            average = total / numOfIntegers;
+            if (integer > 0)
+                numOfPositives++;
+            if (integer < 0)
+                numOfNegatives++;
+            integer = input.nextInt();
+            numOfIntegers++;
+        }
+        System.out.println("The number of positives is " + numOfPositives);
+        System.out.println("The number of negatives is " + numOfNegatives);
+        System.out.println("The total is " + total);
+        System.out.println("The average is " + average);
+    }
+}
