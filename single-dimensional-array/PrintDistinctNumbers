@@ -1,0 +1,34 @@
+import java.util.Scanner;
+public class PrintDistinctNumbers {
+    public static void main(String[]args){
+        //create a Scanner
+        Scanner input = new Scanner(System.in);
+        //crate an array
+        int[]list = new int[10];
+        //prompt the user to enter 10 numbers
+        System.out.print("Enter 10 numbers: ");
+        //count and collect distinct numbers
+        list[0] = input.nextInt();
+        int distinctCount = 1;
+
+        for (int count = 1; count < 10; count++){
+            boolean isDistinct = true;
+            int num = input.nextInt();
+
+            for (int j = 0; j < count; j++){
+                if (num == list[j])
+                    isDistinct = false;
+            }
+            if (isDistinct) {
+                list[distinctCount] = num;
+                distinctCount++;
+            }
+        }
+        //display the result
+        System.out.println("The number of distinct numbers is " + distinctCount);
+        System.out.print("The distinct numbers are: ");
+        for (int i = 0; i < distinctCount; i++){
+            System.out.print(list[i] + " ");
+        }
+    }
+}
