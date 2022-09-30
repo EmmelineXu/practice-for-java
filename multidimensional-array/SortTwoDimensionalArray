@@ -1,0 +1,69 @@
+import java.util.Scanner;
+public class SortTwoDimensionalArray {
+    public static void main(String[]args){
+        //create a Scanner
+        Scanner input = new Scanner(System.in);
+        //prompt the user to enter the number of rows
+        System.out.print("Please enter the number of rows of two dimensional arrays: ");
+        int numOfRows = input.nextInt();
+        //create an array
+        int[][]array = new int[numOfRows][2];
+        //prompt the user to enter array
+        System.out.println("Please enter the array: ");
+        for(int i = 0; i < numOfRows; i++){
+            for (int j = 0; j < array[0].length; j++){
+                array[i][j] = input.nextInt();
+            }
+        }
+        //sort the array
+        sortArray(array);
+        //display the result
+        System.out.println("\nwill be sorted to");
+        for(int i = 0; i < numOfRows; i++){
+            for (int j = 0; j < array[0].length; j++){
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+    public static void sortArray(int[][]array){
+        //sort the first column
+        for (int i = 0; i < array.length - 1; i++){
+            //find the largest num of the column
+            int currentMax = array[i][0];
+            int secondColumnOfMax = array[i][1];
+            int currentMaxIndex = i;
+            for (int j = i + 1; j < array.length; j++){
+                if(array[j][0] > currentMax){
+                    currentMax = array[j][0];
+                    secondColumnOfMax = array[j][1];
+                    currentMaxIndex = j;
+                }
+            }
+            //swap the largest number with the current number
+            if(currentMaxIndex != i){
+                array[currentMaxIndex][0] = array[i][0];
+                array[currentMaxIndex][1] = array[i][1];
+                array[i][0] = currentMax;
+                array[i][1] = secondColumnOfMax;
+            }
+        }
+        //sort the second column
+        for (int i = 0; i < array.length - 1; i++){
+            //find the largest num of the column
+            int currentMax = array[i][1];
+            int currentMaxIndex = i;
+            for (int j = i + 1; j < array.length; j++){
+                if(array[i][0] == array[j][0] && array[j][1] > currentMax){
+                    currentMax = array[j][1];
+                    currentMaxIndex = j;
+                }
+            }
+            //swap the largest number with the current number
+            if(currentMaxIndex != i){
+                array[currentMaxIndex][1] = array[i][1];
+                array[i][1] = currentMax;
+            }
+        }
+    }
+}
