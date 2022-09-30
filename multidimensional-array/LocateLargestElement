@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class LocateLargestElement {
+    public static void main(String[]args){
+        //prompt the user to enter rows and columns
+        System.out.print("Enter the number of rows and columns of the array: ");
+        //create a Scanner
+        Scanner input = new Scanner(System.in);
+        //get the rows and columns
+        int rows = input.nextInt();
+        int columns = input.nextInt();
+        //prompt the user to enter an array
+        System.out.println("Enter the array: ");
+        //get the array
+        double[][] array = getArray(rows, columns);
+        //find the largest element
+        System.out.println("The location of the largest element is at " + locationOfElement(array));
+    }
+
+    //get an array
+    public static double[][]getArray(int rows, int columns){
+        //create a Scanner
+        Scanner input = new Scanner(System.in);
+        //create an array
+        double[][] array = new double[rows][columns];
+        for(int i = 0; i < array.length; i++){
+            for(int j = 0; j < array[0].length; j++){
+                array[i][j] = input.nextDouble();
+            }
+        }
+        return array;
+    }
+
+    //get the location of element
+    public static String locationOfElement(double[][]array){
+        double max = array[0][0];
+        int row = 0;
+        int column = 0;
+        //search for the largest number
+        for(int i = 0; i < array.length; i++){
+            for(int j = 0; j < array[0].length; j++){
+                if (array[i][j] > max) {
+                    max = array[i][j];
+                    row = i;
+                    column = j;
+                }
+            }
+        }
+
+        return "(" + (row + 1) + ", " + (column + 1) + ")";
+    }
+}
